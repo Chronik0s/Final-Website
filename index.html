@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+                background-image: url("images/65023-thought-thinking-emoji-free-hq-image.png");
+                background-repeat: no-repeat;
+                background-size: cover;
+        }
+
+        .square {
+                width: 160px;
+                height: 160px;
+                margin: 10px;
+                position: relative;
+        }
+    </style>
+</head>
+<body>
+    
+    <p>Hmmm, strange... there should be something on this website...</p>
+    <p>Oh, I know! I should try hovering around the left side of the screen!</p>
+
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+
+    <p>Zoo Wee Mama! Those are some epic squares! I wonder how many times they change!</p>
+
+  <script>
+    const squares = document.querySelectorAll('.square');
+
+    squares.forEach(square => {
+      square.addEventListener('mouseover', () => {
+        // Generate random color
+        const randomColor = `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`;
+        square.style.backgroundColor = randomColor;
+
+        // Generate random direction (left, right, up, down)
+        const directions = ['left', 'right', 'up', 'down'];
+        const randomDirection = directions[Math.floor(Math.random() * directions.length)];
+
+        // Apply the transformation
+        switch (randomDirection) {
+          case 'left':
+            square.style.transform = 'translateX(-20px)';
+            break;
+          case 'right':
+            square.style.transform = 'translateX(20px)';
+            break;
+          case 'up':
+            square.style.transform = 'translateY(-20px)';
+            break;
+          case 'down':
+            square.style.transform = 'translateY(20px)';
+            break;
+          default:
+            break;
+        }
+      });
+
+      square.addEventListener('mouseout', () => {
+        // Reset styles on mouseout
+        square.style.transform = 'translate(0)';
+        square.style.backgroundColor = '#3498db'; // Reset to the original color or any default color
+      });
+    });
+  </script>
+</body>
+</html>
